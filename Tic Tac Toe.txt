@@ -1,0 +1,116 @@
+#include<iostream>
+using namespace std;
+void main()
+{
+back:
+	system("cls");
+	int b = 1, c, d;
+	char a, player1, player2, box[10] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+	cout << endl << "\t\t\t\tTic Tac Toe Game" << endl << endl;
+	cout << "Player 1 select your sign" << endl << endl;
+	cout << "Choose between X and O" << endl << endl;
+	cin >> a;
+	cout << endl;
+	switch (a)
+	{
+	case 'x':
+	{
+				player1 = 'X';
+				player2 = 'O';
+				break;
+	}
+	case 'o':
+	{
+				player1 = 'O';
+				player2 = 'X';
+				break;
+	}
+	default:
+	{
+			   cout << "invalid selection";
+			   goto back;
+			   break;
+	}
+	}
+back1:
+	system("cls");
+	cout << "\t\t\tPlayer 1 is " << player1 << "\t\tPlayer 2 is " << player2 << endl << endl;
+	cout << "     |     |" << endl;
+	cout << "  " << box[1] << "  |  " << box[2] << "  |  " << box[3] << endl;
+	cout << "_____|_____|_____" << endl;
+	cout << "     |     |" << endl;
+	cout << "  " << box[4] << "  |  " << box[5] << "  |  " << box[6] << endl;
+	cout << "_____|_____|_____" << endl;
+	cout << "     |     |" << endl;
+	cout << "  " << box[7] << "  |  " << box[8] << "  |  " << box[9] << endl;
+	cout << "     |     |     " << endl;
+
+	do
+	{
+		if (b % 2 == 0)
+		{
+			cout << "Player 1 please select where you want to mark" << endl;
+			cin >> c;
+			if (c > 9 || box[c] == player1 || box[c] == player2)
+			{
+				cout << "Invalid Entry..\n";
+				c = 10;
+			}
+			else
+			{
+				box[c] = player1;
+			}
+		}
+		else
+		{
+			cout << "Player 2 please select where you want to mark" << endl;
+			cin >> c;
+			if (c > 9 || box[c] == player1 || box[c] == player2)
+			{
+				cout << "Invalid Entry..\n";
+				c = 10;
+			}
+			else
+			{
+				box[c] = player2;
+			}
+		}
+	} while (c > 9);
+
+	if ((box[1] == box[2] && box[1] == box[3]) || (box[4] == box[5] && box[5] == box[6]) || (box[7] == box[8] && box[8] == box[9])
+		|| (box[1] == box[5] && box[1] == box[9]) || (box[3] == box[5] && box[7] == box[3]) || (box[1] == box[4] && box[1] == box[7])
+		|| (box[5] == box[2] && box[2] == box[8]) || (box[6] == box[9] && box[6] == box[3]))
+	{
+		if (b % 2 == 0)
+		{
+			cout << endl << "Player 1 wins" << endl << endl << "Enter 1 to play again" << endl << endl << "Enter 2 to exit" << endl;
+		}
+		else
+		{
+			cout << endl << "Player 2 wins" << endl << endl << "Enter 1 to play again" << endl << endl << "Enter 2 to exit" << endl;
+		}
+		cin >> d;
+		if (d == 1)
+		{
+			goto back;
+		}
+		else
+		{
+			exit(0);
+		}
+	}
+	b++;
+	if (b <= 9)
+	{
+		goto back1;
+	}
+	cout << endl << "The game is draw" << endl;
+	cout << endl << "Enter 1 to play again" << endl << endl << "Enter 2 to exit" << endl;
+	cin >> d;
+	if (d == 1)
+	{
+		goto back;
+	}
+
+	system("pause");
+}
